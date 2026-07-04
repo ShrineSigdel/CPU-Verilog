@@ -1,0 +1,30 @@
+# Vivado generated directories
+*.cache/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+
+# Generated logs
+*.log
+*.jou
+*.str
+
+# Temporary files
+.Xil/
+*.tmp
+
+# Bitstreams and reports
+*.bit
+*.bin
+*.ltx
+*.rpt
+
+# Simulation outputs
+*.wdb
+*.pb
+*.vcd
+
+# OS/editor files
+.vscode/
+.DS_Store
