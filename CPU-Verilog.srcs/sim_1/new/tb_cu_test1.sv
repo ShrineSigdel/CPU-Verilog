@@ -14,7 +14,7 @@ module tb_cu_test1;
 
     logic clk, rst;
 
-    top uut (
+    cpu uut (
         .clk(clk),
         .rst(rst)
     );
