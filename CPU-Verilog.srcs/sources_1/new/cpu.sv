@@ -1,7 +1,7 @@
 // Top: RV32I single-cycle CPU top-level
 // Wires together PC, instruction memory, register bank, ALU, CU, data memory, and immediate generator
 
-module top(
+module cpu(
     input logic clk,
     input logic rst
 );
