@@ -14,7 +14,7 @@ module reg_bank(
     output logic [31:0] read_data2
 );
 
-logic [31:0] rf [31:0];
+logic [31:0] rf [0:31];
 
 assign read_data1 = (rs1 == 5'b0) ? 32'b0 : rf[rs1];
 assign read_data2 = (rs2 == 5'b0) ? 32'b0 : rf[rs2];

@@ -17,30 +17,9 @@ cpu uut_cpu (
 
 
 
-// use dip_sw to see output of memory registers
-
-always_comb begin
-   case (dip_sw[2:0])
-       3'd0:  LED = uut_cpu.uut_mem.mem[0][7:0];
-       3'd1:  LED = uut_cpu.uut_mem.mem[1][7:0];
-       3'd2:  LED = uut_cpu.uut_mem.mem[2][7:0];
-       3'd3:  LED = uut_cpu.uut_mem.mem[3][7:0];
-       3'd4:  LED = uut_cpu.uut_mem.mem[4][7:0];
-       3'd5:  LED = uut_cpu.uut_mem.mem[5][7:0];
-       3'd6:  LED = uut_cpu.uut_mem.mem[6][7:0];
-       3'd7:  LED = uut_cpu.uut_mem.mem[7][7:0];
-       default: LED = 8'h00;
-   endcase
-end
-
-
-
-
-
 logic [15:0] data;
 logic [4:0] reg_count;
 
-// For switch input to increment register count
 logic sw_pulse, sw_stable, sw_stable_prev;
 logic [19:0] debounce_count; 
 
@@ -65,7 +44,7 @@ always_ff @(posedge CLK1) begin
         sw_stable_prev <= sw_stable;
 end
 
-assign sw_pulse = ~sw_stable & sw_stable_prev;  // one-cycle pulse on press
+assign sw_pulse = ~sw_stable & sw_stable_prev;
 
 always_ff @(posedge CLK1) begin
     if(RESET) begin 
@@ -75,12 +54,10 @@ always_ff @(posedge CLK1) begin
     end
 end
 
-assign data = uut_cpu.uut_rb.rf[reg_count][15:0]; // Only lower bits of registers
+assign data = uut_cpu.uut_rb.rf[reg_count][15:0];
 
 
 
-
-// ── 7-segment display mux ───────────────────────────
 logic [16:0] clk_16;
 logic [1:0] digit;
 logic [3:0] digit_sel;
@@ -115,4 +92,3 @@ seg_7 uut_seg7 (
 );
 
 endmodule
-    
